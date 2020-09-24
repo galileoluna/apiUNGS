@@ -11,13 +11,13 @@ import (
 )
 
 /*getMaterias lee las materias*/
-func GetMaterias( pagina int64) ([]*models.Inscripcion, bool) {
+func GetMaterias( pagina int64) ([]*models.Materia, bool) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 	db := MongoCN.Database("ungs")
-	col := db.Collection("Materias")
+	col := db.Collection("materias")
 
-	var resultados []*models.Inscripcion
+	var resultados []*models.Materia
 
 	condicion := bson.M{
 	}
@@ -34,7 +34,7 @@ func GetMaterias( pagina int64) ([]*models.Inscripcion, bool) {
 
 	for cursor.Next(context.TODO()) {
 
-		var registro models.Inscripcion
+		var registro models.Materia
 		err := cursor.Decode(&registro)
 		if err != nil {
 			return resultados, false

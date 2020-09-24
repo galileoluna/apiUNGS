@@ -11,13 +11,13 @@ import (
 )
 
 /*getAlumnos nos da los alumnos de la universidad */
-func GetAlumnos( pagina int64) ([]*models.Inscripcion, bool) {
+func GetAlumnos( pagina int64) ([]*models.Alumno, bool) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 	db := MongoCN.Database("ungs")
 	col := db.Collection("alumnos")
 
-	var resultados []*models.Inscripcion
+	var resultados []*models.Alumno
 
 	condicion := bson.M{
 	}
@@ -33,7 +33,7 @@ func GetAlumnos( pagina int64) ([]*models.Inscripcion, bool) {
 
 	for cursor.Next(context.TODO()) {
 
-		var registro models.Inscripcion
+		var registro models.Alumno
 		err := cursor.Decode(&registro)
 		if err != nil {
 			return resultados, false
