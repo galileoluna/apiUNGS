@@ -19,9 +19,9 @@ func Manejadores() {
 
 	router.HandleFunc("/insertoAlumno", middlew.ChequeoBD(routers.InsertoAlumno)).Methods("POST")
 
-//	router.HandleFunc("/insertoAlumno", middlew.ChequeoBD(routers.InsertoAlumno)).Methods("POST")
+	router.HandleFunc("/insertoMateria", middlew.ChequeoBD(routers.InsertoMateria)).Methods("POST")
 
-//	router.HandleFunc("/insertoAlumno", middlew.ChequeoBD(routers.InsertoAlumno)).Methods("POST")
+	router.HandleFunc("/insertoInscripcion", middlew.ChequeoBD(routers.InsertoInscripcion)).Methods("POST")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {

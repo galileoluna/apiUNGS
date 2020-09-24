@@ -8,17 +8,17 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-/*ChequeoYaExistAlumno recibe un email de parámetro y chequea si ya está en la BD */
-func ChequeoYaExisteAlumno(email string) (models.Alumno, bool, string) {
+/*ChequeoYaExistMateria recibe un codigo de parámetro y chequea si ya está en la BD */
+func ChequeoYaExisteMateria(codigo string) (models.Materia, bool, string) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
 	db := MongoCN.Database("ungs")
-	col := db.Collection("alumnos")
+	col := db.Collection("materias")
 
-	condicion := bson.M{"email": email}
+	condicion := bson.M{"codigo": codigo}
 
-	var resultado models.Alumno
+	var resultado models.Materia
 
 	err := col.FindOne(ctx, condicion).Decode(&resultado)
 	ID := resultado.ID.Hex()
