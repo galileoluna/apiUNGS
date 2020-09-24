@@ -7,7 +7,7 @@ import (
 
 	"github.com/gorilla/mux"
 	"gitlab.com/galileoluna/apiUNGS/middlew"
-	//"gitlab.com/galileoluna/apiUNGS/routers"
+	"gitlab.com/galileoluna/apiUNGS/routers"
 	"github.com/rs/cors"
 )
 
@@ -18,6 +18,10 @@ func Manejadores() {
 
 
 	router.HandleFunc("/insertoAlumno", middlew.ChequeoBD(routers.InsertoAlumno)).Methods("POST")
+
+//	router.HandleFunc("/insertoAlumno", middlew.ChequeoBD(routers.InsertoAlumno)).Methods("POST")
+
+//	router.HandleFunc("/insertoAlumno", middlew.ChequeoBD(routers.InsertoAlumno)).Methods("POST")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
