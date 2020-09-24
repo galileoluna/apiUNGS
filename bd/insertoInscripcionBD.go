@@ -14,7 +14,7 @@ func InsertoAlumnoBD(u models.Alumno) (string, bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
-	db := MongoCN.Database("twittor")
+	db := MongoCN.Database("ungs")
 	col := db.Collection("alumnos")
 
 	u.Password, _ = EncriptarPassword(u.Password)
